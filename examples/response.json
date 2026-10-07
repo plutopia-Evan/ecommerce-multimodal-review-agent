@@ -1,0 +1,10 @@
+{
+  "review_id": "review_demo_001",
+  "product_id": "product_001",
+  "final_is_malicious": false,
+  "final_quality": "high_quality",
+  "final_category": "高质量评价",
+  "final_evidence": "评价包含保温时长、防漏表现和通勤场景等具体细节。",
+  "final_reason": "未命中恶意类型或模板复用特征。",
+  "final_status": "decided"
+}

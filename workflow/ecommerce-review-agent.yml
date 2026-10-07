@@ -1,0 +1,2728 @@
+app:
+  description: 用于对电商平台商品评价区评价质量进行分类，分为高质量评价、普通评价和恶意评价。
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  icon_type: emoji
+  mode: workflow
+  name: 电商评价分级工作流
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/deepseek:0.0.24@9e12eef09973667f0eaf4f082af883167e1de88740b22e71e71488d020c3778a
+    version: null
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/tongyi:0.2.22@9cea96ffc7977f536c02999c80ff1283b1819aab9b6fa2fdf789d0c6c7d03715
+    version: null
+kind: app
+version: 0.7.0
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        attachment_image_file_size_limit: 2
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        file_upload_limit: 50
+        image_file_batch_limit: 10
+        image_file_size_limit: 10
+        knowledge_file_size_limit: 15
+        single_chunk_attachment_limit: 10
+        skill_file_size_limit: 50
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: code
+      id: 1789904350597-source-1789905047224-target
+      selected: false
+      source: '1789904350597'
+      sourceHandle: source
+      target: '1789905047224'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: if-else
+      id: 1789905047224-source-1789905869721-target
+      selected: false
+      source: '1789905047224'
+      sourceHandle: source
+      target: '1789905869721'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: template-transform
+      id: 1789905869721-false-1789906513768-target
+      selected: false
+      source: '1789905869721'
+      sourceHandle: 'false'
+      target: '1789906513768'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: template-transform
+        targetType: end
+      id: 1789906513768-source-1789906598877-target
+      selected: false
+      source: '1789906513768'
+      sourceHandle: source
+      target: '1789906598877'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: if-else
+      id: 1789905869721-true-1789906670789-target
+      selected: false
+      source: '1789905869721'
+      sourceHandle: 'true'
+      target: '1789906670789'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: end
+      id: 1789906670789-true-1789906767049-target
+      selected: false
+      source: '1789906670789'
+      sourceHandle: 'true'
+      target: '1789906767049'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: end
+        targetType: llm
+      id: 1789906767049-source-1791100309339-target
+      selected: false
+      source: '1789906767049'
+      sourceHandle: source
+      target: '1791100309339'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: code
+      id: 1791100309339-source-1791103526869-target
+      selected: false
+      source: '1791100309339'
+      sourceHandle: source
+      target: '1791103526869'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: if-else
+      id: 1791103526869-source-1791103743676-target
+      selected: false
+      source: '1791103526869'
+      sourceHandle: source
+      target: '1791103743676'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: knowledge-retrieval
+      id: 1791103743676-false-1791184972617-target
+      selected: false
+      source: '1791103743676'
+      sourceHandle: 'false'
+      target: '1791184972617'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: knowledge-retrieval
+        targetType: llm
+      id: 1791184972617-source-1791188354652-target
+      selected: false
+      source: '1791184972617'
+      sourceHandle: source
+      target: '1791188354652'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: code
+      id: 1791188354652-source-1791189103730-target
+      selected: false
+      source: '1791188354652'
+      sourceHandle: source
+      target: '1791189103730'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: if-else
+      id: 1791189103730-source-1791189349568-target
+      selected: false
+      source: '1791189103730'
+      sourceHandle: source
+      target: '1791189349568'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: code
+      id: 1791103743676-true-1791189709259-target
+      selected: false
+      source: '1791103743676'
+      sourceHandle: 'true'
+      target: '1791189709259'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: code
+      id: 1791103743676-07c15bcb-3079-4ad2-b1e5-786d761a7632-1791190503357-target
+      selected: false
+      source: '1791103743676'
+      sourceHandle: 07c15bcb-3079-4ad2-b1e5-786d761a7632
+      target: '1791190503357'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: code
+      id: 1791189349568-true-1791190653612-target
+      selected: false
+      source: '1791189349568'
+      sourceHandle: 'true'
+      target: '1791190653612'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: code
+      id: 1791189349568-228e3483-8c08-45ab-9e4e-eb9970f91592-1791190897675-target
+      selected: false
+      source: '1791189349568'
+      sourceHandle: 228e3483-8c08-45ab-9e4e-eb9970f91592
+      target: '1791190897675'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: code
+      id: 1791189349568-false-1791191336591-target
+      selected: false
+      source: '1791189349568'
+      sourceHandle: 'false'
+      target: '1791191336591'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: llm
+      id: 1789906670789-false-1791193118043-target
+      selected: false
+      source: '1789906670789'
+      sourceHandle: 'false'
+      target: '1791193118043'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: code
+      id: 1791193118043-source-1791193435453-target
+      selected: false
+      source: '1791193118043'
+      sourceHandle: source
+      target: '1791193435453'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: if-else
+      id: 1791193435453-source-1791196640380-target
+      selected: false
+      source: '1791193435453'
+      sourceHandle: source
+      target: '1791196640380'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: code
+      id: 1791196640380-true-1791196892995-target
+      selected: false
+      source: '1791196640380'
+      sourceHandle: 'true'
+      target: '1791196892995'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: code
+      id: 1791196640380-a7a201d5-2e28-421e-af54-9e778807eeb7-1791197186124-target
+      selected: false
+      source: '1791196640380'
+      sourceHandle: a7a201d5-2e28-421e-af54-9e778807eeb7
+      target: '1791197186124'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: code
+      id: 1791196640380-f7276c44-2151-47b3-99d7-f8a8b8982a86-1791197380538-target
+      selected: false
+      source: '1791196640380'
+      sourceHandle: f7276c44-2151-47b3-99d7-f8a8b8982a86
+      target: '1791197380538'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: code
+      id: 1791196640380-false-1791197508558-target
+      selected: false
+      source: '1791196640380'
+      sourceHandle: 'false'
+      target: '1791197508558'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: variable-aggregator
+      id: 1791189709259-source-1791198007104-target
+      selected: false
+      source: '1791189709259'
+      sourceHandle: source
+      target: '1791198007104'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: variable-aggregator
+      id: 1791190503357-source-1791198007104-target
+      selected: false
+      source: '1791190503357'
+      sourceHandle: source
+      target: '1791198007104'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: variable-aggregator
+      id: 1791190653612-source-1791198007104-target
+      selected: false
+      source: '1791190653612'
+      sourceHandle: source
+      target: '1791198007104'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: variable-aggregator
+      id: 1791190897675-source-1791198007104-target
+      selected: false
+      source: '1791190897675'
+      sourceHandle: source
+      target: '1791198007104'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: variable-aggregator
+      id: 1791191336591-source-1791198007104-target
+      selected: false
+      source: '1791191336591'
+      sourceHandle: source
+      target: '1791198007104'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: variable-aggregator
+      id: 1791196892995-source-1791198007104-target
+      selected: false
+      source: '1791196892995'
+      sourceHandle: source
+      target: '1791198007104'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: variable-aggregator
+      id: 1791197186124-source-1791198007104-target
+      selected: false
+      source: '1791197186124'
+      sourceHandle: source
+      target: '1791198007104'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: variable-aggregator
+      id: 1791197380538-source-1791198007104-target
+      selected: false
+      source: '1791197380538'
+      sourceHandle: source
+      target: '1791198007104'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: variable-aggregator
+      id: 1791197508558-source-1791198007104-target
+      selected: false
+      source: '1791197508558'
+      sourceHandle: source
+      target: '1791198007104'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: if-else
+      id: 1789905869721-true-1791357025025-target
+      selected: false
+      source: '1789905869721'
+      sourceHandle: 'true'
+      target: '1791357025025'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: code
+      id: 1791357025025-false-1791357309725-target
+      selected: false
+      source: '1791357025025'
+      sourceHandle: 'false'
+      target: '1791357309725'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: llm
+      id: 1791357025025-true-1791358457162-target
+      selected: false
+      source: '1791357025025'
+      sourceHandle: 'true'
+      target: '1791358457162'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: code
+      id: 1791358457162-source-1791360065556-target
+      selected: false
+      source: '1791358457162'
+      sourceHandle: source
+      target: '1791360065556'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: variable-aggregator
+      id: 1791360065556-source-1791360560524-target
+      selected: false
+      source: '1791360065556'
+      sourceHandle: source
+      target: '1791360560524'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: variable-aggregator
+      id: 1791357309725-source-1791360560524-target
+      selected: false
+      source: '1791357309725'
+      sourceHandle: source
+      target: '1791360560524'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: variable-aggregator
+        targetType: code
+      id: 1791360560524-source-1791361073435-target
+      selected: false
+      source: '1791360560524'
+      sourceHandle: source
+      target: '1791361073435'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: variable-aggregator
+        targetType: code
+      id: 1791198007104-source-1791361073435-target
+      selected: false
+      source: '1791198007104'
+      sourceHandle: source
+      target: '1791361073435'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: end
+      id: 1791361073435-source-1791365474574-target
+      selected: false
+      source: '1791361073435'
+      sourceHandle: source
+      target: '1791365474574'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        selected: false
+        title: 用户输入
+        type: start
+        variables:
+        - default: ''
+          hint: ''
+          label: 当前评价编号
+          options: []
+          placeholder: ''
+          required: true
+          type: text-input
+          variable: review_id
+        - default: ''
+          hint: ''
+          label: 商品编号，后续过滤RAG知识库
+          options: []
+          placeholder: ''
+          required: true
+          type: text-input
+          variable: product_id
+        - default: ''
+          hint: ''
+          label: 评价正文
+          options: []
+          placeholder: ''
+          required: false
+          type: paragraph
+          variable: review_text
+        - default: ''
+          hint: ''
+          label: 商品标题
+          options: []
+          placeholder: ''
+          required: true
+          type: text-input
+          variable: product_title
+        - default: ''
+          hint: ''
+          label: 商品介绍
+          options: []
+          placeholder: ''
+          required: true
+          type: paragraph
+          variable: product_description
+        - allowed_file_extensions: []
+          allowed_file_types:
+          - image
+          allowed_file_upload_methods:
+          - local_file
+          - remote_url
+          default: ''
+          hide: false
+          hint: ''
+          label: 评价图片
+          max_length: 5
+          options: []
+          placeholder: ''
+          required: false
+          type: file-list
+          variable: review_images
+      height: 237
+      id: '1789904350597'
+      position:
+        x: -24.53155030473019
+        y: 250.41079523758157
+      positionAbsolute:
+        x: -24.53155030473019
+        y: 250.41079523758157
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    - data:
+        code: "import re\n\ndef main(\n    review_text: str,\n    product_title: str,\n\
+          \    product_description: str,\n    review_images: list\n) -> dict:\n  \
+          \  text = (review_text or \"\").strip()\n    title = (product_title or \"\
+          \").strip()\n    description = (product_description or \"\").strip()\n \
+          \   images = review_images or []\n\n    clean_text = re.sub(r\"\\s+\", \"\
+          \", text)\n    char_count = len(clean_text)\n    images_count = len(images)\n\
+          \    has_images = images_count > 0\n\n    errors = []\n    if not title:\n\
+          \        errors.append(\"缺少商品标题\")\n    if not description:\n        errors.append(\"\
+          缺少商品介绍\")\n    if not text and not has_images:\n        errors.append(\"\
+          评价正文和图片不能同时为空\")\n\n    return {\n        \"clean_text\": text,\n      \
+          \  \"char_count\": char_count,\n        \"is_long\": char_count > 60,\n\
+          \        \"has_images\": has_images,\n        \"images_count\": images_count,\n\
+          \        \"valid_input\": len(errors) == 0,\n        \"validation_error\"\
+          : \"；\".join(errors),\n        \"text_path\": \"long_review\" if char_count\
+          \ > 60 else \"short_review\"\n    }"
+        code_language: python3
+        desc: 代码节点用于字数计算、空值检查等确定性操作。
+        outputs:
+          char_count:
+            children: null
+            type: number
+          clean_text:
+            children: null
+            type: string
+          has_images:
+            children: null
+            type: boolean
+          images_count:
+            children: null
+            type: number
+          is_long:
+            children: null
+            type: boolean
+          text_path:
+            children: null
+            type: string
+          valid_input:
+            children: null
+            type: boolean
+          validation_error:
+            children: null
+            type: string
+        selected: false
+        title: 输入预处理
+        type: code
+        variables:
+        - value_selector:
+          - '1789904350597'
+          - review_text
+          value_type: string
+          variable: review_text
+        - value_selector:
+          - '1789904350597'
+          - product_title
+          value_type: string
+          variable: product_title
+        - value_selector:
+          - '1789904350597'
+          - product_description
+          value_type: string
+          variable: product_description
+        - value_selector:
+          - '1789904350597'
+          - review_images
+          value_type: array[file]
+          variable: review_images
+      height: 94
+      id: '1789905047224'
+      position:
+        x: 373.75648520437136
+        y: 271.41079523758157
+      positionAbsolute:
+        x: 373.75648520437136
+        y: 271.41079523758157
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 0
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: is
+            id: f8ded50c-c8f8-46cc-8ed0-9a86c07718cb
+            value: true
+            varType: boolean
+            variable_selector:
+            - '1789905047224'
+            - valid_input
+          logical_operator: and
+        selected: false
+        title: 输入有效性判断
+        type: if-else
+      height: 146
+      id: '1789905869721'
+      position:
+        x: 795.7564852043714
+        y: 271.41079523758157
+      positionAbsolute:
+        x: 795.7564852043714
+        y: 271.41079523758157
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 0
+    - data:
+        selected: false
+        template: "处理状态：invalid_input\r\n错误原因：{{ validation_error }}"
+        title: 输入错误提示
+        type: template-transform
+        variables:
+        - value_selector:
+          - '1789905047224'
+          - validation_error
+          value_type: string
+          variable: validation_error
+      height: 50
+      id: '1789906513768'
+      position:
+        x: 893.748932266747
+        y: 1278.7252441985142
+      positionAbsolute:
+        x: 893.748932266747
+        y: 1278.7252441985142
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 0
+    - data:
+        outputs:
+        - value_selector:
+          - '1789906513768'
+          - output
+          value_type: string
+          variable: output
+        selected: false
+        title: result
+        type: end
+      height: 87
+      id: '1789906598877'
+      position:
+        x: 1267.0312470300985
+        y: 1278.7252441985142
+      positionAbsolute:
+        x: 1267.0312470300985
+        y: 1278.7252441985142
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 0
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: '>'
+            id: a7f07e43-5b41-4d6b-9a29-07e3abba3643
+            value: '60'
+            varType: number
+            variable_selector:
+            - '1789905047224'
+            - char_count
+          logical_operator: and
+        selected: false
+        title: 长短评价判断
+        type: if-else
+      height: 122
+      id: '1789906670789'
+      position:
+        x: 1204.2564852043715
+        y: 196.86707679736807
+      positionAbsolute:
+        x: 1204.2564852043715
+        y: 196.86707679736807
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 0
+    - data:
+        outputs:
+        - value_selector:
+          - '1789905047224'
+          - text_path
+          value_type: string
+          variable: route
+        - value_selector:
+          - '1789905047224'
+          - char_count
+          value_type: number
+          variable: char_count
+        - value_selector:
+          - '1789905047224'
+          - has_images
+          value_type: boolean
+          variable: has_images
+        - value_selector:
+          - '1789905047224'
+          - clean_text
+          value_type: string
+          variable: review_text
+        selected: false
+        title: 调试输出 长评价
+        type: end
+      height: 165
+      id: '1789906767049'
+      position:
+        x: 1613.2564852043715
+        y: 145.86707679736807
+      positionAbsolute:
+        x: 1613.2564852043715
+        y: 145.86707679736807
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 0
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: deepseek-flash
+          provider: langgenius/deepseek/deepseek
+        prompt_template:
+        - id: 9705492f-b6a5-4268-9ca0-a124580525e7
+          role: system
+          text: "你是电商评价质量审核模型。请根据评价正文、商品标题和商品介绍，对大于60字的评价进行语义初判。\n\n【业务规则】\n\n1. 以下任意一种情况出现，都直接属于恶意评价：\n\
+            - 凑字数：大量重复、无意义堆砌、复制无关内容，主要目的是达到字数要求。\n- 情绪强烈：存在明显辱骂、攻击、诅咒、极端贬损或煽动性表达。\n\
+            - 拼写混乱：大量错别字、乱码、语序严重混乱，导致内容基本无法正常理解。\n- 人身攻击：针对商家、客服、品牌人员或其他个人进行攻击。\n\
+            - 广告导流：包含联系方式、外部平台、引流、推广或竞品营销。\n- 明显无关：评价内容与当前商品或购买体验明显无关。\n\n2. 上述情况不需要与其他证据组合。只要命中一种，就判定为恶意评价。\n\
+            \n3. “情绪强烈”需要达到辱骂、攻击、诅咒、极端贬损等程度。普通的生气、失望或明确表达不满，不自动属于恶意评价。\n【负面因素判定补充规则】\n\
+            \n1. 只有评价明确描述影响商品功能、质量、正常使用、服务体验的问题，或者明确表达不满、失望、投诉时，has_negative_factor才可以为true。\n\
+            \n2. 以下内容不能单独判定为负面因素：\n- 对颜色、尺寸、重量、包装或外观的中性描述。\n- “颜色稍深”“尺寸略小”“包装普通”等轻微差异，但评价者没有表达明显不满。\n\
+            - 先描述轻微差异，随后明确表示可以接受或整体满意。\n- 不影响商品使用的个人偏好差异。\n\n3. 必须结合整条评价的总体语义判断，不能只抓取一个可能带有负面含义的词语。\n\
+            \n4. 如果评价整体正面，仅包含不影响使用的轻微差异，has_negative_factor必须为false，is_malicious必须为false，next_route必须为template_check。\n\
+            \n5. 客观差评必须包含明确、实质性的商品或服务问题，例如漏水、破损、无法使用、严重色差、功能失效、客服拒绝处理等。\n4. 如果评价包含负面内容，但没有命中任何恶意类型，标记为“存在负面因素，但暂未发现恶意”。这类评价后续可能属于客观差评，不能直接屏蔽。\n\
+            \n5. 如果没有明显负面因素，也没有命中恶意类型，不要直接判定为高质量评价。它需要进入后续的RAG套模板检测。\n\n6. 商品标题和商品介绍仅用于判断评价是否与商品有关，以及理解评价所描述的问题，不能用商品介绍否定消费者的真实反馈。\n\
+            \n7. 只根据输入内容判断，不得补充或猜测不存在的事实。\n\n【输入】\n\n商品标题：\n{{#1789904350597.product_title#}}\n\
+            \n商品介绍：\n{{#1789904350597.product_description#}}\n\n评价正文：\n{{#1789905047224.clean_text#}}}\n\
+            \n评价字数：\n{{#1789905047224.char_count#}}\n\n【输出格式】\n\n完成分析后，最终答案必须输出一个JSON对象，不要输出判定报告，不要使用Markdown代码块。\n\
+            \nJSON必须包含以下字段：\n\n{\n  \"has_negative_factor\": true,\n  \"is_malicious\"\
+            : true,\n  \"malicious_type\": \"情绪强烈\",\n  \"evidence\": \"评价原文中的判断依据\"\
+            ,\n  \"reason\": \"简短判断理由\",\n  \"next_route\": \"malicious\"\n}\n\n字段规则：\n\
+            \n1. has_negative_factor只能为true或false。\n2. is_malicious只能为true或false。\n\
+            3. malicious_type只能填写：凑字数、情绪强烈、拼写混乱、人身攻击、广告导流、明显无关、无。\n4. next_route只能填写：\n\
+            \   - malicious\n   - objective_negative_candidate\n   - template_check\n\
+            5. 不得增加其他字段。\n6. 最终JSON之外不要输出任何解释文字。\n"
+        selected: false
+        structured_output:
+          schema:
+            additionalProperties: false
+            properties:
+              evidence:
+                description: 评价原文中的判断依据；没有时填写空字符串
+                type: string
+              has_negative_factor:
+                description: 是否存在明显负面因素
+                type: boolean
+              is_malicious:
+                description: 是否命中恶意评价规则
+                type: boolean
+              malicious_type:
+                description: 命中的恶意类型；没有命中时填写“无”
+                type: string
+              next_route:
+                description: 只能返回 malicious、objective_negative_candidate、template_check
+                  三者之一
+                type: string
+              reason:
+                description: 简短说明判断理由
+                type: string
+            required:
+            - has_negative_factor
+            - is_malicious
+            - malicious_type
+            - evidence
+            - reason
+            - next_route
+            type: object
+        structured_output_enabled: false
+        title: 长评价语义初判
+        type: llm
+        vision:
+          enabled: false
+      height: 86
+      id: '1791100309339'
+      position:
+        x: 2048.637977786407
+        y: 174.13803209300912
+      positionAbsolute:
+        x: 2048.637977786407
+        y: 174.13803209300912
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 0
+    - data:
+        code: "import json\nimport re\n\ndef main(llm_text: str) -> dict:\n    raw\
+          \ = llm_text or \"\"\n\n    # 去掉DeepSeek的思考内容\n    if \"</think>\" in raw:\n\
+          \        raw = raw.rsplit(\"</think>\", 1)[-1]\n\n    # 去掉可能出现的Markdown代码块\n\
+          \    raw = re.sub(\n        r\"```json|```\",\n        \"\",\n        raw,\n\
+          \        flags=re.IGNORECASE\n    ).strip()\n\n    # 提取最终JSON对象\n    start\
+          \ = raw.find(\"{\")\n    end = raw.rfind(\"}\")\n\n    if start == -1 or\
+          \ end == -1 or end < start:\n        raise ValueError(\"没有找到有效的JSON结果\"\
+          )\n\n    data = json.loads(raw[start:end + 1])\n\n    allowed_routes = [\n\
+          \        \"malicious\",\n        \"objective_negative_candidate\",\n   \
+          \     \"template_check\"\n    ]\n\n    next_route = str(data.get(\"next_route\"\
+          , \"\")).strip()\n\n    if next_route not in allowed_routes:\n        raise\
+          \ ValueError(\n            \"next_route不是允许的路由值：\" + next_route\n      \
+          \  )\n\n    return {\n        \"has_negative_factor\": bool(\n         \
+          \   data.get(\"has_negative_factor\", False)\n        ),\n        \"is_malicious\"\
+          : bool(\n            data.get(\"is_malicious\", False)\n        ),\n   \
+          \     \"malicious_type\": str(\n            data.get(\"malicious_type\"\
+          , \"无\")\n        ),\n        \"evidence\": str(\n            data.get(\"\
+          evidence\", \"\")\n        ),\n        \"reason\": str(\n            data.get(\"\
+          reason\", \"\")\n        ),\n        \"next_route\": next_route\n    }"
+        code_language: python3
+        outputs:
+          evidence:
+            children: null
+            type: string
+          has_negative_factor:
+            children: null
+            type: boolean
+          is_malicious:
+            children: null
+            type: boolean
+          malicious_type:
+            children: null
+            type: string
+          next_route:
+            children: null
+            type: string
+          reason:
+            children: null
+            type: string
+        selected: false
+        title: 解析长评价结果
+        type: code
+        variables:
+        - value_selector:
+          - '1791100309339'
+          - text
+          value_type: string
+          variable: llm_text
+      height: 50
+      id: '1791103526869'
+      position:
+        x: 2443.5387413178505
+        y: 190.2074148859281
+      positionAbsolute:
+        x: 2443.5387413178505
+        y: 190.2074148859281
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 0
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: is
+            id: c67175d1-170e-44f4-8dd3-68f5398177ce
+            value: malicious
+            varType: string
+            variable_selector:
+            - '1791103526869'
+            - next_route
+          logical_operator: and
+        - case_id: 07c15bcb-3079-4ad2-b1e5-786d761a7632
+          conditions:
+          - comparison_operator: is
+            id: c7b2e9a2-1bb8-4e6d-995a-ee8b939f5a2a
+            value: objective_negative_candidate
+            varType: string
+            variable_selector:
+            - '1791103526869'
+            - next_route
+          logical_operator: and
+        selected: false
+        title: 条件分支 3
+        type: if-else
+      height: 218
+      id: '1791103743676'
+      position:
+        x: 2832.9474836618456
+        y: 169.53084449598148
+      positionAbsolute:
+        x: 2832.9474836618456
+        y: 169.53084449598148
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 0
+    - data:
+        code: "def main(\n    malicious_type: str,\n    evidence: str,\n    reason:\
+          \ str\n) -> dict:\n    return {\n        \"text_is_malicious\": True,\n\
+          \        \"text_quality\": \"malicious\",\n        \"text_category\": malicious_type\
+          \ or \"恶意评价\",\n        \"text_evidence\": evidence or \"\",\n        \"\
+          text_reason\": reason or \"\",\n        \"text_status\": \"decided\"\n \
+          \   }"
+        code_language: python3
+        outputs:
+          text_category:
+            children: null
+            type: string
+          text_evidence:
+            children: null
+            type: string
+          text_is_malicious:
+            children: null
+            type: boolean
+          text_quality:
+            children: null
+            type: string
+          text_reason:
+            children: null
+            type: string
+          text_status:
+            children: null
+            type: string
+        selected: false
+        title: 标准化文字结果-恶意
+        type: code
+        variables:
+        - value_selector:
+          - '1791103526869'
+          - malicious_type
+          value_type: string
+          variable: malicious_type
+        - value_selector:
+          - '1791103526869'
+          - evidence
+          value_type: string
+          variable: evidence
+        - value_selector:
+          - '1791103526869'
+          - reason
+          value_type: string
+          variable: reason
+      height: 50
+      id: '1791189709259'
+      position:
+        x: 3255.094129123256
+        y: 154.59776588102002
+      positionAbsolute:
+        x: 3255.094129123256
+        y: 154.59776588102002
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 0
+    - data:
+        dataset_ids:
+        - Z2+5oK7qRn6Y60d+ucUjIqjerlQ579mZQqUNY26/H1z7AW6iq25uN4jYkwbKliZb
+        metadata_filtering_conditions:
+          conditions:
+          - comparison_operator: is
+            id: 7a5e5193-60bc-4d47-b6cb-69b9c9dc06f2
+            metadata_id: b5bdfa98-70d5-48e4-b032-ac9df43e7ec2
+            name: product_id
+            value: '{{#1789904350597.product_id#}}'
+          logical_operator: and
+        metadata_filtering_mode: manual
+        multiple_retrieval_config:
+          reranking_enable: true
+          reranking_mode: reranking_model
+          reranking_model:
+            model: qwen3-rerank
+            provider: langgenius/tongyi/tongyi
+          top_k: 4
+        query_attachment_selector: []
+        query_variable_selector:
+        - '1789905047224'
+        - clean_text
+        retrieval_mode: multiple
+        selected: false
+        title: 历史长评价检索
+        type: knowledge-retrieval
+      height: 88
+      id: '1791184972617'
+      position:
+        x: 3265.31908704354
+        y: 383.6125502130412
+      positionAbsolute:
+        x: 3265.31908704354
+        y: 383.6125502130412
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 0
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1791184972617'
+          - result
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: deepseek-v4-flash
+          provider: langgenius/deepseek/deepseek
+        prompt_template:
+        - id: f804d035-5014-4587-98db-011f218c8175
+          role: system
+          text: "你是电商评价套模板检测模型。\n\n当前评价已经满足以下条件：\n1. 评价字数大于60字。\n2. 没有明显负面因素。\n3.\
+            \ 没有命中凑字数、情绪强烈、拼写混乱、人身攻击、广告导流或明显无关等恶意类型。\n\n你的任务是将当前评价与同一商品的历史长评价进行比较，判断当前评价是否属于套模板评价。\n\
+            \n【套模板判断规则】\n\n满足以下一种或多种特征时，可以判断为套模板评价：\n\n1. 当前评价与历史评价存在大段相同或高度相似的连续表达。\n\
+            2. 评价的句子顺序、描述结构和结尾推荐语与历史评价高度一致。\n3. 只替换了少量商品名称、颜色、规格、物流或客服等词语，主体内容基本相同。\n\
+            4. 多条历史评价反复使用相同的固定结构，例如：\n   “质量不错→包装完整→物流很快→使用方便→符合预期→性价比高→推荐购买”。\n5.\
+            \ 评价包含大量通用赞美语，但缺少与当前商品有关的具体使用细节，并与历史评价高度重合。\n\n以下情况不能仅凭单一因素判断为套模板：\n\n\
+            1. 只出现“质量不错”“物流很快”等少量常见词语。\n2. 仅主题相似，但具体体验、表达顺序和细节明显不同。\n3. 只因为检索相似度较高，但没有发现明显重复结构或重复措辞。\n\
+            \n如果判断为套模板评价：\n- is_template为true。\n- next_route为malicious_template。\n\
+            - 该评价按业务规则属于低质量恶意评价。\n\n如果不属于套模板评价：\n- is_template为false。\n- next_route为high_quality。\n\
+            - 该评价进入高质量评价候选。\n\n只能根据当前评价和提供的历史评价判断，不得补充不存在的内容。\n\n【当前评价】\n\n{{#1789905047224.clean_text#}}}\n\
+            \n【同商品历史长评价】\n\n{{#context#}}\n\n【输出格式】\n\n最终答案只输出一个JSON对象，不要使用Markdown代码块：\n\
+            \n{\n  \"is_template\": true,\n  \"template_type\": \"固定结构复用\",\n  \"\
+            matched_evidence\": \"当前评价与历史评价重复的主要表达或结构\",\n  \"reason\": \"简短判断理由\"\
+            ,\n  \"next_route\": \"malicious_template\"\n}\n\n如果当前评价为空，或没有提供任何历史评价，不得判定为high_quality，也不得猜测结果。此时next_route返回rag_data_missing。\n\
+            \n字段规则：\n\n1. is_template只能为true或false。\n2. template_type只能填写：\n   - 大段文字重复\n\
+            \   - 固定结构复用\n   - 少量词语替换\n   - 通用模板文案\n   - 无\n3. next_route只能填写：\n \
+            \  - malicious_template\n   - high_quality\n   - rag——data_missing\n4.\
+            \ 不得增加其他字段。\n"
+        - id: 7b7dfe8e-f1cf-44a6-b6ef-43453733f08e
+          role: user
+          text: ''
+        selected: false
+        title: 套模板判断
+        type: llm
+        vision:
+          enabled: false
+      height: 86
+      id: '1791188354652'
+      position:
+        x: 3683.7929828905817
+        y: 428.5363619006523
+      positionAbsolute:
+        x: 3683.7929828905817
+        y: 428.5363619006523
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 0
+    - data:
+        code: "import json\nimport re\n\ndef main(llm_text: str) -> dict:\n    raw\
+          \ = llm_text or \"\"\n\n    if \"</think>\" in raw:\n        raw = raw.rsplit(\"\
+          </think>\", 1)[-1]\n\n    raw = re.sub(\n        r\"```json|```\",\n   \
+          \     \"\",\n        raw,\n        flags=re.IGNORECASE\n    ).strip()\n\n\
+          \    start = raw.find(\"{\")\n    end = raw.rfind(\"}\")\n\n    if start\
+          \ == -1 or end == -1 or end < start:\n        return {\n            \"parse_success\"\
+          : False,\n            \"parse_error\": \"没有找到有效JSON\",\n            \"is_template\"\
+          : False,\n            \"template_type\": \"无\",\n            \"matched_evidence\"\
+          : \"\",\n            \"reason\": \"\",\n            \"next_route\": \"rag_data_missing\"\
+          \n        }\n\n    try:\n        data = json.loads(raw[start:end + 1])\n\
+          \n        value = data.get(\"is_template\", False)\n        if isinstance(value,\
+          \ bool):\n            is_template = value\n        else:\n            is_template\
+          \ = str(value).strip().lower() in [\n                \"true\", \"是\", \"\
+          yes\", \"1\"\n            ]\n\n        next_route = str(\n            data.get(\"\
+          next_route\", \"\")\n        ).strip()\n\n        allowed_routes = [\n \
+          \           \"malicious_template\",\n            \"high_quality\",\n   \
+          \         \"rag_data_missing\"\n        ]\n\n        if next_route not in\
+          \ allowed_routes:\n            return {\n                \"parse_success\"\
+          : False,\n                \"parse_error\": \"next_route不在允许范围内\",\n    \
+          \            \"is_template\": is_template,\n                \"template_type\"\
+          : str(\n                    data.get(\"template_type\", \"无\")\n       \
+          \         ),\n                \"matched_evidence\": str(\n             \
+          \       data.get(\"matched_evidence\", \"\")\n                ),\n     \
+          \           \"reason\": str(data.get(\"reason\", \"\")),\n             \
+          \   \"next_route\": \"rag_data_missing\"\n            }\n\n        return\
+          \ {\n            \"parse_success\": True,\n            \"parse_error\":\
+          \ \"\",\n            \"is_template\": is_template,\n            \"template_type\"\
+          : str(\n                data.get(\"template_type\", \"无\")\n           \
+          \ ),\n            \"matched_evidence\": str(\n                data.get(\"\
+          matched_evidence\", \"\")\n            ),\n            \"reason\": str(data.get(\"\
+          reason\", \"\")),\n            \"next_route\": next_route\n        }\n\n\
+          \    except Exception as error:\n        return {\n            \"parse_success\"\
+          : False,\n            \"parse_error\": str(error),\n            \"is_template\"\
+          : False,\n            \"template_type\": \"无\",\n            \"matched_evidence\"\
+          : \"\",\n            \"reason\": \"\",\n            \"next_route\": \"rag_data_missing\"\
+          \n        }"
+        code_language: python3
+        outputs:
+          is_template:
+            children: null
+            type: boolean
+          matched_evidence:
+            children: null
+            type: string
+          next_route:
+            children: null
+            type: string
+          parse_error:
+            children: null
+            type: string
+          parse_success:
+            children: null
+            type: boolean
+          reason:
+            children: null
+            type: string
+          template_type:
+            children: null
+            type: string
+        selected: false
+        title: 解析套模板结果
+        type: code
+        variables:
+        - value_selector:
+          - '1791188354652'
+          - text
+          value_type: string
+          variable: llm_text
+      height: 50
+      id: '1791189103730'
+      position:
+        x: 4081.129286444867
+        y: 447.91369644571455
+      positionAbsolute:
+        x: 4081.129286444867
+        y: 447.91369644571455
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 0
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: is
+            id: 546fc5b2-f7ea-4cf1-8d6e-d63a648e99ef
+            value: malicious_template
+            varType: string
+            variable_selector:
+            - '1791189103730'
+            - next_route
+          logical_operator: and
+        - case_id: 228e3483-8c08-45ab-9e4e-eb9970f91592
+          conditions:
+          - comparison_operator: is
+            id: 6678f75d-3358-424c-9c8d-cd94f692e66a
+            value: high_quality
+            varType: string
+            variable_selector:
+            - '1791189103730'
+            - next_route
+          logical_operator: and
+        selected: false
+        title: 套模板结果路由
+        type: if-else
+      height: 218
+      id: '1791189349568'
+      position:
+        x: 4474.558473031351
+        y: 442.1702046707294
+      positionAbsolute:
+        x: 4474.558473031351
+        y: 442.1702046707294
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 0
+    - data:
+        code: "def main(\n    template_type: str,\n    matched_evidence: str,\n  \
+          \  reason: str\n) -> dict:\n    category = \"套模板评价\"\n\n    if template_type\
+          \ and template_type != \"无\":\n        category = \"套模板评价-\" + template_type\n\
+          \n    return {\n        \"text_is_malicious\": True,\n        \"text_quality\"\
+          : \"malicious\",\n        \"text_category\": category,\n        \"text_evidence\"\
+          : matched_evidence or \"\",\n        \"text_reason\": reason or \"\",\n\
+          \        \"text_status\": \"decided\"\n    }"
+        code_language: python3
+        outputs:
+          text_category:
+            children: null
+            type: string
+          text_evidence:
+            children: null
+            type: string
+          text_is_malicious:
+            children: null
+            type: boolean
+          text_quality:
+            children: null
+            type: string
+          text_reason:
+            children: null
+            type: string
+          text_status:
+            children: null
+            type: string
+        selected: false
+        title: 标准化文字结果-套模板恶意
+        type: code
+        variables:
+        - value_selector:
+          - '1791189103730'
+          - template_type
+          value_type: string
+          variable: template_type
+        - value_selector:
+          - '1791189103730'
+          - matched_evidence
+          value_type: string
+          variable: matched_evidence
+        - value_selector:
+          - '1791189103730'
+          - reason
+          value_type: string
+          variable: reason
+      height: 50
+      id: '1791190653612'
+      position:
+        x: 4817.444931997966
+        y: 369.80220830591617
+      positionAbsolute:
+        x: 4817.444931997966
+        y: 369.80220830591617
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 0
+    - data:
+        code: "def main(\n    matched_evidence: str,\n    reason: str\n) -> dict:\n\
+          \    return {\n        \"text_is_malicious\": False,\n        \"text_quality\"\
+          : \"high_quality\",\n        \"text_category\": \"高质量评价\",\n        \"text_evidence\"\
+          : matched_evidence or \"\",\n        \"text_reason\": reason or \"\",\n\
+          \        \"text_status\": \"decided\"\n    }"
+        code_language: python3
+        outputs:
+          text_category:
+            children: null
+            type: string
+          text_evidence:
+            children: null
+            type: string
+          text_is_malicious:
+            children: null
+            type: boolean
+          text_quality:
+            children: null
+            type: string
+          text_reason:
+            children: null
+            type: string
+          text_status:
+            children: null
+            type: string
+        selected: false
+        title: 标准化文字结果-高质量
+        type: code
+        variables:
+        - value_selector:
+          - '1791189103730'
+          - matched_evidence
+          value_type: string
+          variable: matched_evidence
+        - value_selector:
+          - '1791189103730'
+          - reason
+          value_type: string
+          variable: reason
+      height: 50
+      id: '1791190897675'
+      position:
+        x: 4845.013692517895
+        y: 514.5382010355426
+      positionAbsolute:
+        x: 4845.013692517895
+        y: 514.5382010355426
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 0
+    - data:
+        code: "def main(\n    parse_error: str,\n    reason: str\n) -> dict:\n   \
+          \ detail = parse_error or reason or \"知识库未返回有效数据\"\n\n    return {\n   \
+          \     \"text_is_malicious\": False,\n        \"text_quality\": \"manual_review\"\
+          ,\n        \"text_category\": \"RAG异常待复核\",\n        \"text_evidence\":\
+          \ \"\",\n        \"text_reason\": detail,\n        \"text_status\": \"manual_review\"\
+          \n    }"
+        code_language: python3
+        outputs:
+          text_category:
+            children: null
+            type: string
+          text_evidence:
+            children: null
+            type: string
+          text_is_malicilous:
+            children: null
+            type: boolean
+          text_quality:
+            children: null
+            type: string
+          text_reason:
+            children: null
+            type: string
+          text_status:
+            children: null
+            type: string
+        selected: false
+        title: 标准化文字结果-RAG异常
+        type: code
+        variables:
+        - value_selector:
+          - '1791189103730'
+          - parse_error
+          value_type: string
+          variable: parse_error
+        - value_selector:
+          - '1791189103730'
+          - reason
+          value_type: string
+          variable: reason
+      height: 50
+      id: '1791191336591'
+      position:
+        x: 4837.547153210415
+        y: 652.382003635187
+      positionAbsolute:
+        x: 4837.547153210415
+        y: 652.382003635187
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 0
+    - data:
+        code: "def main(\n    evidence: str,\n    reason: str\n) -> dict:\n    return\
+          \ {\n        \"text_is_malicious\": False,\n        \"text_quality\": \"\
+          objective_negative\",\n        \"text_category\": \"客观差评\",\n        \"\
+          text_evidence\": evidence or \"\",\n        \"text_reason\": reason or \"\
+          \",\n        \"text_status\": \"decided\"\n    }"
+        code_language: python3
+        outputs:
+          text_category:
+            children: null
+            type: string
+          text_evidence:
+            children: null
+            type: string
+          text_is_malicious:
+            children: null
+            type: boolean
+          text_quality:
+            children: null
+            type: string
+          text_reason:
+            children: null
+            type: string
+          text_status:
+            children: null
+            type: string
+        selected: false
+        title: 标准化文字结果-客观差评
+        type: code
+        variables:
+        - value_selector:
+          - '1791103526869'
+          - evidence
+          value_type: string
+          variable: evidence
+        - value_selector:
+          - '1791103526869'
+          - reason
+          value_type: string
+          variable: reason
+      height: 50
+      id: '1791190503357'
+      position:
+        x: 3236.0272789911164
+        y: 252.46576224583322
+      positionAbsolute:
+        x: 3236.0272789911164
+        y: 252.46576224583322
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 0
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: deepseek-v4-flash
+          provider: langgenius/deepseek/deepseek
+        prompt_template:
+        - id: 7d766fb4-b867-465e-ae4e-60fabe15abb2
+          role: system
+          text: "你是电商短评价质量审核模型。\n\n请结合评价正文、商品标题和商品介绍，对字数小于等于60字的评价进行分类。\n\n【基本规则】\n\
+            \n1. 短评价不能被判定为高质量评价。\n2. 短评价不进入RAG套模板检测。\n3. 商品标题和商品介绍只用于理解当前商品及判断评价是否相关，不能用于否定消费者的真实反馈。\n\
+            4. 只根据输入内容判断，不得补充不存在的事实。\n\n【恶意评价规则】\n\n出现以下任意一种情况，直接判定为恶意评价：\n\n- 凑字数：明显重复、无意义堆砌或复制无关内容。\n\
+            - 情绪强烈：存在明显辱骂、攻击、诅咒、极端贬损或煽动性表达。\n- 拼写混乱：大量错别字、乱码或语序严重混乱，导致内容基本无法理解。\n\
+            - 人身攻击：针对商家、客服、品牌人员或其他个人进行攻击。\n- 广告导流：包含联系方式、外部平台、推广、引流或竞品营销。\n- 明显无关：内容与当前商品及购买体验明显无关。\n\
+            \n上述类型不需要与其他证据组合。命中任何一种，is_malicious必须为true，next_route必须为malicious。\n\n\
+            【客观差评规则】\n\n如果评价明确描述商品或服务存在实质问题，例如：\n\n- 商品破损、漏水、无法使用或功能失效。\n- 商品质量、尺寸、材质或性能存在明显问题。\n\
+            - 物流、包装或客服服务存在明确问题。\n- 评价者明确表达不满或投诉。\n\n但没有命中任何恶意类型，则：\n\n- has_negative_factor为true。\n\
+            - is_malicious为false。\n- malicious_type填写“无”。\n- next_route填写objective_negative。\n\
+            \n客观差评不能屏蔽。\n\n【普通低信息评价规则】\n\n如果没有明确负面因素，也没有命中任何恶意类型，例如：\n\n- “很好”\n-\
+            \ “不错”\n- “一般”\n- “还可以”\n- “挺好用的”\n\n则属于普通低信息评价：\n\n- has_negative_factor为false。\n\
+            - is_malicious为false。\n- malicious_type填写“无”。\n- next_route填写low_quality。\n\
+            \n这类评价不是高质量评价，但也不是恶意评价。\n\n【输入】\n\n商品标题：\n{{#1789904350597.product_title#}}\n\
+            商品介绍：\n{{#1789904350597.product_description#}}\n\n评价正文：\n{{#1789905047224.clean_text#}}\n\
+            \n评价字数：\n{{#1789905047224.char_count#}}\n\n【输出格式】\n\n最终答案只输出一个JSON对象，不要使用Markdown代码块：\n\
+            \n{\n  \"has_negative_factor\": true,\n  \"is_malicious\": false,\n  \"\
+            malicious_type\": \"无\",\n  \"evidence\": \"评价原文中的判断依据\",\n  \"reason\"\
+            : \"简短判断理由\",\n  \"next_route\": \"objective_negative\"\n}\n\n字段规则：\n\n\
+            1. has_negative_factor只能为true或false。\n2. is_malicious只能为true或false。\n\
+            3. malicious_type只能填写：\n   - 凑字数\n   - 情绪强烈\n   - 拼写混乱\n   - 人身攻击\n  \
+            \ - 广告导流\n   - 明显无关\n   - 无\n4. next_route只能填写：\n   - malicious\n   -\
+            \ objective_negative\n   - low_quality\n5. 不得增加其他字段。"
+        selected: false
+        title: 短评价语义判断
+        type: llm
+        vision:
+          enabled: false
+      height: 86
+      id: '1791193118043'
+      position:
+        x: 1613.2564852043715
+        y: 374.4668153021248
+      positionAbsolute:
+        x: 1613.2564852043715
+        y: 374.4668153021248
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 0
+    - data:
+        code: "import json\nimport re\n\ndef main(llm_text: str) -> dict:\n    raw\
+          \ = llm_text or \"\"\n\n    if \"</think>\" in raw:\n        raw = raw.rsplit(\"\
+          </think>\", 1)[-1]\n\n    raw = re.sub(\n        r\"```json|```\",\n   \
+          \     \"\",\n        raw,\n        flags=re.IGNORECASE\n    ).strip()\n\n\
+          \    start = raw.find(\"{\")\n    end = raw.rfind(\"}\")\n\n    if start\
+          \ == -1 or end == -1 or end < start:\n        return {\n            \"parse_success\"\
+          : False,\n            \"parse_error\": \"没有找到有效JSON\",\n            \"has_negative_factor\"\
+          : False,\n            \"is_malicious\": False,\n            \"malicious_type\"\
+          : \"无\",\n            \"evidence\": \"\",\n            \"reason\": \"\"\
+          ,\n            \"next_route\": \"manual_review\"\n        }\n\n    try:\n\
+          \        data = json.loads(raw[start:end + 1])\n\n        def to_bool(value):\n\
+          \            if isinstance(value, bool):\n                return value\n\
+          \            return str(value).strip().lower() in [\n                \"\
+          true\", \"是\", \"yes\", \"1\"\n            ]\n\n        next_route = str(\n\
+          \            data.get(\"next_route\", \"\")\n        ).strip()\n\n     \
+          \   allowed_routes = [\n            \"malicious\",\n            \"objective_negative\"\
+          ,\n            \"low_quality\"\n        ]\n\n        if next_route not in\
+          \ allowed_routes:\n            return {\n                \"parse_success\"\
+          : False,\n                \"parse_error\": \"next_route不在允许范围内\",\n    \
+          \            \"has_negative_factor\": to_bool(\n                    data.get(\"\
+          has_negative_factor\", False)\n                ),\n                \"is_malicious\"\
+          : to_bool(\n                    data.get(\"is_malicious\", False)\n    \
+          \            ),\n                \"malicious_type\": str(\n            \
+          \        data.get(\"malicious_type\", \"无\")\n                ),\n     \
+          \           \"evidence\": str(data.get(\"evidence\", \"\")),\n         \
+          \       \"reason\": str(data.get(\"reason\", \"\")),\n                \"\
+          next_route\": \"manual_review\"\n            }\n\n        return {\n   \
+          \         \"parse_success\": True,\n            \"parse_error\": \"\",\n\
+          \            \"has_negative_factor\": to_bool(\n                data.get(\"\
+          has_negative_factor\", False)\n            ),\n            \"is_malicious\"\
+          : to_bool(\n                data.get(\"is_malicious\", False)\n        \
+          \    ),\n            \"malicious_type\": str(\n                data.get(\"\
+          malicious_type\", \"无\")\n            ),\n            \"evidence\": str(data.get(\"\
+          evidence\", \"\")),\n            \"reason\": str(data.get(\"reason\", \"\
+          \")),\n            \"next_route\": next_route\n        }\n\n    except Exception\
+          \ as error:\n        return {\n            \"parse_success\": False,\n \
+          \           \"parse_error\": str(error),\n            \"has_negative_factor\"\
+          : False,\n            \"is_malicious\": False,\n            \"malicious_type\"\
+          : \"无\",\n            \"evidence\": \"\",\n            \"reason\": \"\"\
+          ,\n            \"next_route\": \"manual_review\"\n        }"
+        code_language: python3
+        outputs:
+          evidence:
+            children: null
+            type: string
+          has_negative_factor:
+            children: null
+            type: boolean
+          is_malicious:
+            children: null
+            type: boolean
+          malicious_type:
+            children: null
+            type: string
+          next_route:
+            children: null
+            type: string
+          parse_error:
+            children: null
+            type: string
+          parse_success:
+            children: null
+            type: boolean
+          reason:
+            children: null
+            type: string
+        selected: false
+        title: ' 解析短评价结果'
+        type: code
+        variables:
+        - value_selector:
+          - '1791193118043'
+          - text
+          value_type: string
+          variable: llm_text
+      height: 50
+      id: '1791193435453'
+      position:
+        x: 1986.8245326124156
+        y: 387.63656242925055
+      positionAbsolute:
+        x: 1986.8245326124156
+        y: 387.63656242925055
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 0
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: is
+            id: e04b8cfb-05b4-462a-97c8-1d853443fbad
+            value: malicious
+            varType: string
+            variable_selector:
+            - '1791193435453'
+            - next_route
+          logical_operator: and
+        - case_id: a7a201d5-2e28-421e-af54-9e778807eeb7
+          conditions:
+          - comparison_operator: is
+            id: 0426f461-2809-457d-8d27-1e07baeb6caa
+            value: objective_negative
+            varType: string
+            variable_selector:
+            - '1791193435453'
+            - next_route
+          logical_operator: and
+        - case_id: f7276c44-2151-47b3-99d7-f8a8b8982a86
+          conditions:
+          - comparison_operator: contains
+            id: 5d3d3567-f6e1-4941-8b70-754d7c36aa63
+            value: low_quality
+            varType: string
+            variable_selector:
+            - '1791193435453'
+            - next_route
+          logical_operator: and
+        selected: false
+        title: 短评价结果路由
+        type: if-else
+      height: 290
+      id: '1791196640380'
+      position:
+        x: 2384.1676261814096
+        y: 286.5049193558489
+      positionAbsolute:
+        x: 2384.1676261814096
+        y: 286.5049193558489
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 0
+    - data:
+        code: "def main(\n    evidence: str,\n    reason: str\n) -> dict:\n    return\
+          \ {\n        \"text_is_malicious\": False,\n        \"text_quality\": \"\
+          objective_negative\",\n        \"text_category\": \"客观差评\",\n        \"\
+          text_evidence\": evidence or \"\",\n        \"text_reason\": reason or \"\
+          \",\n        \"text_status\": \"decided\"\n    }"
+        code_language: python3
+        outputs:
+          text_category:
+            children: null
+            type: string
+          text_evidence:
+            children: null
+            type: string
+          text_is_malicious:
+            children: null
+            type: boolean
+          text_quality:
+            children: null
+            type: string
+          text_reason:
+            children: null
+            type: string
+          text_status:
+            children: null
+            type: string
+        selected: false
+        title: 标准化短评价结果-客观差评
+        type: code
+        variables:
+        - value_selector:
+          - '1791193435453'
+          - evidence
+          value_type: string
+          variable: evidence
+        - value_selector:
+          - '1791193435453'
+          - reason
+          value_type: string
+          variable: reason
+      height: 50
+      id: '1791197186124'
+      position:
+        x: 2759.1714526244755
+        y: 560.2382923888725
+      positionAbsolute:
+        x: 2759.1714526244755
+        y: 560.2382923888725
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 0
+    - data:
+        code: "def main(\n    evidence: str,\n    reason: str\n) -> dict:\n    return\
+          \ {\n        \"text_is_malicious\": False,\n        \"text_quality\": \"\
+          low_quality\",\n        \"text_category\": \"普通低信息评价\",\n        \"text_evidence\"\
+          : evidence or \"\",\n        \"text_reason\": reason or \"\",\n        \"\
+          text_status\": \"decided\"\n    }"
+        code_language: python3
+        outputs:
+          text_category:
+            children: null
+            type: string
+          text_evidence:
+            children: null
+            type: string
+          text_is_malicious:
+            children: null
+            type: boolean
+          text_quality:
+            children: null
+            type: string
+          text_reason:
+            children: null
+            type: string
+          text_status:
+            children: null
+            type: string
+        selected: false
+        title: 标准化短评价结果-低信息
+        type: code
+        variables:
+        - value_selector:
+          - '1791193435453'
+          - evidence
+          value_type: string
+          variable: evidence
+        - value_selector:
+          - '1791193435453'
+          - reason
+          value_type: string
+          variable: reason
+      height: 50
+      id: '1791197380538'
+      position:
+        x: 2754.452724475229
+        y: 669.9487218588527
+      positionAbsolute:
+        x: 2754.452724475229
+        y: 669.9487218588527
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 0
+    - data:
+        code: "def main(\n    parse_error: str,\n    reason: str\n) -> dict:\n   \
+          \ detail = parse_error or reason or \"短评价语义判断结果异常\"\n\n    return {\n  \
+          \      \"text_is_malicious\": False,\n        \"text_quality\": \"manual_review\"\
+          ,\n        \"text_category\": \"短评价异常待复核\",\n        \"text_evidence\":\
+          \ \"\",\n        \"text_reason\": detail,\n        \"text_status\": \"manual_review\"\
+          \n    }"
+        code_language: python3
+        outputs:
+          text_category:
+            children: null
+            type: string
+          text_evidence:
+            children: null
+            type: string
+          text_is_malicious:
+            children: null
+            type: boolean
+          text_quality:
+            children: null
+            type: string
+          text_reason:
+            children: null
+            type: string
+          text_status:
+            children: null
+            type: string
+        selected: false
+        title: 标准化短评价结果-异常
+        type: code
+        variables:
+        - value_selector:
+          - '1791193435453'
+          - parse_error
+          value_type: string
+          variable: parse_error
+        - value_selector:
+          - '1791193435453'
+          - reason
+          value_type: string
+          variable: reason
+      height: 50
+      id: '1791197508558'
+      position:
+        x: 2746.194950214048
+        y: 772.5810591049631
+      positionAbsolute:
+        x: 2746.194950214048
+        y: 772.5810591049631
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 0
+    - data:
+        code: "def main(\n    malicious_type: str,\n    evidence: str,\n    reason:\
+          \ str\n) -> dict:\n    return {\n        \"text_is_malicious\": True,\n\
+          \        \"text_quality\": \"malicious\",\n        \"text_category\": malicious_type\
+          \ or \"恶意评价\",\n        \"text_evidence\": evidence or \"\",\n        \"\
+          text_reason\": reason or \"\",\n        \"text_status\": \"decided\"\n \
+          \   }"
+        code_language: python3
+        outputs:
+          text_category:
+            children: null
+            type: string
+          text_evidence:
+            children: null
+            type: string
+          text_is_malicious:
+            children: null
+            type: boolean
+          text_quality:
+            children: null
+            type: string
+          text_reason:
+            children: null
+            type: string
+          text_status:
+            children: null
+            type: string
+        selected: false
+        title: 标准化短评价结果-恶意
+        type: code
+        variables:
+        - value_selector:
+          - '1791193435453'
+          - malicious_type
+          value_type: string
+          variable: malicious_type
+        - value_selector:
+          - '1791193435453'
+          - evidence
+          value_type: string
+          variable: evidence
+        - value_selector:
+          - '1791193435453'
+          - reason
+          value_type: string
+          variable: reason
+      height: 50
+      id: '1791196892995'
+      position:
+        x: 2746.194950214048
+        y: 442.1702046707294
+      positionAbsolute:
+        x: 2746.194950214048
+        y: 442.1702046707294
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 0
+    - data:
+        advanced_settings:
+          group_enabled: true
+          groups:
+          - groupId: 198cb398-2035-470d-8cc6-720ab296d419
+            group_name: text_is_malicious
+            output_type: boolean
+            variables:
+            - - '1791190897675'
+              - text_is_malicious
+            - - '1791191336591'
+              - text_is_malicilous
+            - - '1791190653612'
+              - text_is_malicious
+            - - '1791189709259'
+              - text_is_malicious
+            - - '1791190503357'
+              - text_is_malicious
+            - - '1791197186124'
+              - text_is_malicious
+            - - '1791197380538'
+              - text_is_malicious
+            - - '1791196892995'
+              - text_is_malicious
+            - - '1791197508558'
+              - text_is_malicious
+          - groupId: 6eb6b440-b807-4095-a993-13e07cf02716
+            group_name: text_quality
+            output_type: string
+            variables:
+            - - '1791190897675'
+              - text_quality
+            - - '1791191336591'
+              - text_quality
+            - - '1791190653612'
+              - text_quality
+            - - '1791189709259'
+              - text_quality
+            - - '1791190503357'
+              - text_quality
+            - - '1791197186124'
+              - text_quality
+            - - '1791197380538'
+              - text_quality
+            - - '1791196892995'
+              - text_quality
+            - - '1791197508558'
+              - text_quality
+          - groupId: 66f79039-2175-447e-a5b6-72ccd208f428
+            group_name: text_category
+            output_type: string
+            variables:
+            - - '1791190897675'
+              - text_category
+            - - '1791191336591'
+              - text_category
+            - - '1791190653612'
+              - text_category
+            - - '1791189709259'
+              - text_category
+            - - '1791190503357'
+              - text_category
+            - - '1791197186124'
+              - text_category
+            - - '1791197380538'
+              - text_category
+            - - '1791197508558'
+              - text_category
+            - - '1791196892995'
+              - text_category
+          - groupId: b0d27786-cd24-4cca-83ff-55b18f439985
+            group_name: text_evidence
+            output_type: string
+            variables:
+            - - '1791190897675'
+              - text_evidence
+            - - '1791191336591'
+              - text_evidence
+            - - '1791190653612'
+              - text_evidence
+            - - '1791189709259'
+              - text_evidence
+            - - '1791190503357'
+              - text_evidence
+            - - '1791197186124'
+              - text_evidence
+            - - '1791197380538'
+              - text_evidence
+            - - '1791197508558'
+              - text_reason
+            - - '1791196892995'
+              - text_evidence
+          - groupId: a4f08cce-13a7-4f20-8f61-731b38f627e8
+            group_name: text_reason
+            output_type: string
+            variables:
+            - - '1791190897675'
+              - text_reason
+            - - '1791191336591'
+              - text_reason
+            - - '1791190653612'
+              - text_reason
+            - - '1791189709259'
+              - text_reason
+            - - '1791190503357'
+              - text_reason
+            - - '1791197186124'
+              - text_reason
+            - - '1791197380538'
+              - text_reason
+            - - '1791196892995'
+              - text_reason
+            - - '1791197508558'
+              - text_reason
+          - groupId: d487afcc-6dfa-44d6-aa75-989e985d80bc
+            group_name: text_status
+            output_type: string
+            variables:
+            - - '1791190897675'
+              - text_status
+            - - '1791191336591'
+              - text_status
+            - - '1791190653612'
+              - text_status
+            - - '1791189709259'
+              - text_status
+            - - '1791190503357'
+              - text_status
+            - - '1791197186124'
+              - text_status
+            - - '1791197380538'
+              - text_status
+            - - '1791196892995'
+              - text_status
+            - - '1791197508558'
+              - text_status
+        output_type: any
+        selected: false
+        title: 文字分析结果总聚合
+        type: variable-aggregator
+        variables: []
+      height: 1637
+      id: '1791198007104'
+      position:
+        x: 5423.874881577038
+        y: 1221.7445701694414
+      positionAbsolute:
+        x: 5423.874881577038
+        y: 1221.7445701694414
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 0
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: is
+            id: 390647ca-45be-44d6-8f9a-aea287df654d
+            value: true
+            varType: boolean
+            variable_selector:
+            - '1789905047224'
+            - has_images
+          logical_operator: and
+        selected: false
+        title: 图片存在判断
+        type: if-else
+      height: 146
+      id: '1791357025025'
+      position:
+        x: 1181.6539570822476
+        y: 782.9432224857655
+      positionAbsolute:
+        x: 1181.6539570822476
+        y: 782.9432224857655
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 0
+    - data:
+        code: "def main() -> dict:\n    return {\n        \"image_is_malicious\":\
+          \ False,\n        \"image_quality\": \"no_image\",\n        \"image_category\"\
+          : \"无图\",\n        \"image_evidence\": \"\",\n        \"image_reason\":\
+          \ \"评价未上传图片\",\n        \"image_status\": \"decided\",\n        \"normal_image_count\"\
+          : 0,\n        \"invalid_image_count\": 0\n    }"
+        code_language: python3
+        outputs:
+          image_category:
+            children: null
+            type: string
+          image_evidence:
+            children: null
+            type: string
+          image_is_malicious:
+            children: null
+            type: boolean
+          image_quality:
+            children: null
+            type: string
+          image_reason:
+            children: null
+            type: string
+          image_status:
+            children: null
+            type: string
+          invalid_image_count:
+            children: null
+            type: number
+          normal_image_count:
+            children: null
+            type: number
+        selected: false
+        title: 标准化图片结果-无图
+        type: code
+        variables: []
+      height: 50
+      id: '1791357309725'
+      position:
+        x: 1580.7222080065392
+        y: 994.2452414823132
+      positionAbsolute:
+        x: 1580.7222080065392
+        y: 994.2452414823132
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 0
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: deepseek-v4-flash-vision-exp
+          provider: langgenius/deepseek/deepseek
+        prompt_template:
+        - id: 8614d383-54b1-41b3-8c65-7df254286c7a
+          role: system
+          text: "你是电商评价图片审核模型。\n\n请逐张分析用户上传的评价图片，并结合商品标题、商品介绍和评价正文，判断图片是否正常、低质量或恶意。\n\
+            \n【正常图片】\n\n满足以下条件之一，可视为正常图片：\n\n- 展示当前商品实物。\n- 展示商品实际使用场景。\n- 展示包装、物流状态、商品细节或商品问题。\n\
+            - 图片与当前商品或购买体验相关。\n- 图片清晰度足以理解主要内容。\n\n【无效或低质量图片】\n\n以下图片计入invalid_image_count，但不直接判定为恶意：\n\
+            \n- 与当前商品和购买体验无关。\n- 严重模糊、全黑、全白、遮挡严重或无法辨认。\n- 重复上传且没有新增信息。\n- 明显为占位图、表情包或无意义截图。\n\
+            - 疑似AI生成，且无法证明为真实商品或真实使用场景。\n\n如果上传了图片，但normal_image_count为0，并且没有恶意图片，则判定为低质量图片评价。\n\
+            \n【恶意图片】\n\n以下任意情况出现，image_is_malicious为true：\n\n- 包含联系方式、二维码、外部平台账号或广告导流。\n\
+            - 包含针对商家、客服或个人的辱骂、攻击、诅咒文字。\n- 包含明显违法、色情、血腥、暴力或严重不适内容。\n- 使用图片进行竞品推广或营销导流。\n\
+            \n单纯无关图、模糊图或疑似AI图片不能直接判为恶意，只作为无效图片处理。\n\n【综合规则】\n\n1. 任意一张图片命中恶意图片，next_route为malicious_image。\n\
+            2. 没有恶意图片，且至少有一张正常图片，next_route为image_ok。\n3. 没有恶意图片，且一张正常图片都没有，next_route为image_low_quality。\n\
+            4. 图片无法可靠读取或模型无法完成判断时，next_route为manual_review。\n5. normal_image_count加invalid_image_count应等于上传图片总数。\n\
+            \n\n\n【商品标题】\n\n{{#1789904350597.product_title#}}\n\n【商品介绍】\n\n{{#1789904350597.product_description#}}\n\
+            \n【评价正文】\n\n{{#1789905047224.clean_text#}}\n\n【上传图片数量】\n\n{{#1789905047224.images_count#}}\n\
+            \n【输出格式】\n\n最终答案只输出一个JSON对象，不要使用Markdown代码块：\n\n{\n  \"image_is_malicious\"\
+            : false,\n  \"image_quality\": \"normal\",\n  \"image_category\": \"商品实物图\"\
+            ,\n  \"image_evidence\": \"图片展示当前商品实物及使用细节\",\n  \"image_reason\": \"\
+            图片清晰且与商品和评价内容相关\",\n  \"normal_image_count\": 1,\n  \"invalid_image_count\"\
+            : 0,\n  \"next_route\": \"image_ok\"\n}\n\n字段规则：\n\n1. image_is_malicious只能为true或false。\n\
+            2. image_quality只能填写：\n   - malicious\n   - normal\n   - low_quality\n\
+            \   - manual_review\n3. image_category可以填写：\n   - 商品实物图\n   - 使用场景图\n\
+            \   - 商品问题图\n   - 包装物流图\n   - 无关图\n   - 模糊不可辨认\n   - 疑似AI生成\n   - 广告导流\n\
+            \   - 攻击辱骂\n   - 违规内容\n   - 混合类型\n4. next_route只能填写：\n   - malicious_image\n\
+            \   - image_ok\n   - image_low_quality\n   - manual_review\n5. 不得增加其他字段。\n\
+            6.【字段取值限制】\nimage_quality 只能填写以下值之一：\n- image_ok\n- image_low_quality\n\
+            - malicious\n- manual_review\n\n当 next_route 为 image_ok 时，image_quality\
+            \ 必须为 image_ok。\n当 next_route 为 image_low_quality 时，image_quality 必须为\
+            \ image_low_quality。\n当 next_route 为 malicious_image 时，image_quality 必须为\
+            \ malicious。\n当 next_route 为 manual_review 时，image_quality 必须为 manual_review。\n\
+            \n不得输出 normal、invalid、正常、低质量等其他值。"
+        selected: false
+        title: 图片质量与恶意分析
+        type: llm
+        vision:
+          configs:
+            detail: high
+            variable_selector:
+            - '1789904350597'
+            - review_images
+          enabled: true
+      height: 86
+      id: '1791358457162'
+      position:
+        x: 1590.6741035372527
+        y: 821.0884397400133
+      positionAbsolute:
+        x: 1590.6741035372527
+        y: 821.0884397400133
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 0
+    - data:
+        code: "import json\nimport re\n\n\ndef main(raw_text: str) -> dict:\n    default_result\
+          \ = {\n        \"image_is_malicious\": False,\n        \"image_quality\"\
+          : \"manual_review\",\n        \"image_category\": \"无法判断\",\n        \"\
+          image_evidence\": \"\",\n        \"image_reason\": \"图片分析结果解析失败，转人工复核。\"\
+          ,\n        \"normal_image_count\": 0,\n        \"invalid_image_count\":\
+          \ 0,\n        \"next_route\": \"manual_review\",\n        \"parse_success\"\
+          : False,\n        \"parse_error\": \"\"\n    }\n\n    try:\n        text\
+          \ = raw_text or \"\"\n\n        # 删除 DeepSeek 的思考内容\n        text = re.sub(\n\
+          \            r\"<think>.*?</think>\",\n            \"\",\n            text,\n\
+          \            flags=re.DOTALL\n        ).strip()\n\n        # 提取 JSON 对象\n\
+          \        start = text.find(\"{\")\n        end = text.rfind(\"}\")\n\n \
+          \       if start == -1 or end == -1 or end <= start:\n            raise\
+          \ ValueError(\"未找到完整的JSON对象\")\n\n        data = json.loads(text[start:end\
+          \ + 1])\n\n        quality_map = {\n            \"normal\": \"image_ok\"\
+          ,\n            \"正常\": \"image_ok\",\n            \"image_ok\": \"image_ok\"\
+          ,\n            \"invalid\": \"image_low_quality\",\n            \"低质量\"\
+          : \"image_low_quality\",\n            \"image_low_quality\": \"image_low_quality\"\
+          ,\n            \"malicious\": \"malicious\",\n            \"恶意\": \"malicious\"\
+          ,\n            \"manual_review\": \"manual_review\"\n        }\n\n     \
+          \   route_map = {\n            \"image_ok\": \"image_ok\",\n           \
+          \ \"image_low_quality\": \"image_low_quality\",\n            \"malicious_image\"\
+          : \"malicious_image\",\n            \"manual_review\": \"manual_review\"\
+          \n        }\n\n        image_quality = quality_map.get(\n            str(data.get(\"\
+          image_quality\", \"\")).strip(),\n            \"manual_review\"\n      \
+          \  )\n\n        next_route = route_map.get(\n            str(data.get(\"\
+          next_route\", \"\")).strip(),\n            \"manual_review\"\n        )\n\
+          \n        image_is_malicious = data.get(\"image_is_malicious\", False)\n\
+          \n        if isinstance(image_is_malicious, str):\n            image_is_malicious\
+          \ = (\n                image_is_malicious.strip().lower() == \"true\"\n\
+          \            )\n        else:\n            image_is_malicious = bool(image_is_malicious)\n\
+          \n        normal_count = max(\n            0, int(data.get(\"normal_image_count\"\
+          , 0) or 0)\n        )\n        invalid_count = max(\n            0, int(data.get(\"\
+          invalid_image_count\", 0) or 0)\n        )\n\n        # 根据最终路由统一关键字段\n \
+          \       if next_route == \"malicious_image\":\n            image_is_malicious\
+          \ = True\n            image_quality = \"malicious\"\n\n        elif next_route\
+          \ == \"image_ok\":\n            image_is_malicious = False\n           \
+          \ image_quality = \"image_ok\"\n\n        elif next_route == \"image_low_quality\"\
+          :\n            image_is_malicious = False\n            image_quality = \"\
+          image_low_quality\"\n\n        else:\n            image_is_malicious = False\n\
+          \            image_quality = \"manual_review\"\n\n        return {\n   \
+          \         \"image_is_malicious\": image_is_malicious,\n            \"image_quality\"\
+          : image_quality,\n            \"image_category\": str(\n               \
+          \ data.get(\"image_category\", \"无法判断\")\n            ),\n            \"\
+          image_evidence\": str(\n                data.get(\"image_evidence\", \"\"\
+          )\n            ),\n            \"image_reason\": str(\n                data.get(\"\
+          image_reason\", \"\")\n            ),\n            \"normal_image_count\"\
+          : normal_count,\n            \"invalid_image_count\": invalid_count,\n \
+          \           \"next_route\": next_route,\n            \"parse_success\":\
+          \ True,\n            \"parse_error\": \"\"\n        }\n\n    except Exception\
+          \ as error:\n        default_result[\"parse_error\"] = str(error)\n    \
+          \    return default_result"
+        code_language: python3
+        outputs:
+          image_category:
+            children: null
+            type: string
+          image_evidence:
+            children: null
+            type: string
+          image_is_malicious:
+            children: null
+            type: boolean
+          image_quality:
+            children: null
+            type: string
+          image_reason:
+            children: null
+            type: string
+          invalid_image_count:
+            children: null
+            type: number
+          next_route:
+            children: null
+            type: string
+          normal_image_count:
+            children: null
+            type: number
+          parse_error:
+            children: null
+            type: string
+          parse_success:
+            children: null
+            type: boolean
+        selected: false
+        title: 标准化图片分析结果
+        type: code
+        variables:
+        - value_selector:
+          - '1791358457162'
+          - text
+          value_type: string
+          variable: raw_text
+      height: 50
+      id: '1791360065556'
+      position:
+        x: 2005.9899568356159
+        y: 821.0884397400133
+      positionAbsolute:
+        x: 2005.9899568356159
+        y: 821.0884397400133
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 0
+    - data:
+        advanced_settings:
+          group_enabled: true
+          groups:
+          - groupId: 359b8e4e-a207-443f-85e9-86e8ac900a05
+            group_name: image_is_malicious
+            output_type: boolean
+            variables:
+            - - '1791357309725'
+              - image_is_malicious
+            - - '1791360065556'
+              - image_is_malicious
+          - groupId: cec30a70-f35e-4891-83e6-d878fc82e9df
+            group_name: image_quality
+            output_type: string
+            variables:
+            - - '1791360065556'
+              - image_quality
+            - - '1791357309725'
+              - image_quality
+          - groupId: a4145341-0b8b-4f8f-a8ff-a87368982d1e
+            group_name: image_category
+            output_type: string
+            variables:
+            - - '1791360065556'
+              - image_category
+            - - '1791357309725'
+              - image_category
+          - groupId: 99ba37da-2fcb-4866-82c0-a4f4400a5c56
+            group_name: image_evidence
+            output_type: string
+            variables:
+            - - '1791360065556'
+              - image_evidence
+            - - '1791357309725'
+              - image_evidence
+          - groupId: b603752f-8320-4a9d-8ae3-5d9e152bdbc1
+            group_name: image_reason
+            output_type: string
+            variables:
+            - - '1791360065556'
+              - image_reason
+            - - '1791357309725'
+              - image_reason
+          - groupId: 369d366a-a1bc-4526-801e-e24f52b6c391
+            group_name: normal_image_count
+            output_type: number
+            variables:
+            - - '1791360065556'
+              - normal_image_count
+            - - '1791357309725'
+              - normal_image_count
+          - groupId: b889ed0e-39eb-4b09-b31b-c8331197adc5
+            group_name: invalid_image_count
+            output_type: number
+            variables:
+            - - '1791360065556'
+              - invalid_image_count
+            - - '1791357309725'
+              - invalid_image_count
+        output_type: any
+        selected: false
+        title: 图片结果聚合
+        type: variable-aggregator
+        variables: []
+      height: 618
+      id: '1791360560524'
+      position:
+        x: 2664.4827832327196
+        y: 962.1803003542046
+      positionAbsolute:
+        x: 2664.4827832327196
+        y: 962.1803003542046
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 0
+    - data:
+        code: "def unwrap(value):\n    \"\"\"\n    将聚合器输出的 {\"output\": 实际值} 还原成实际值。\n\
+          \    同时兼容多层 output 包装。\n    \"\"\"\n    while isinstance(value, dict) and\
+          \ \"output\" in value:\n        value = value[\"output\"]\n    return value\n\
+          \n\ndef to_text(value, default=\"\"):\n    value = unwrap(value)\n\n   \
+          \ if value is None:\n        return default\n\n    if isinstance(value,\
+          \ (dict, list)):\n        return str(value)\n\n    return str(value)\n\n\
+          \ndef to_bool(value):\n    value = unwrap(value)\n\n    if isinstance(value,\
+          \ bool):\n        return value\n\n    if isinstance(value, str):\n     \
+          \   return value.strip().lower() in [\n            \"true\",\n         \
+          \   \"1\",\n            \"yes\",\n            \"是\"\n        ]\n\n    return\
+          \ bool(value)\n\n\ndef main(\n    text_is_malicious,\n    text_quality,\n\
+          \    text_category,\n    text_evidence,\n    text_reason,\n    image_is_malicious,\n\
+          \    image_quality,\n    image_category,\n    image_evidence,\n    image_reason\n\
+          ) -> dict:\n\n    # 清除聚合器产生的 output 包装\n    text_is_malicious = to_bool(text_is_malicious)\n\
+          \    text_quality = to_text(text_quality, \"manual_review\")\n    text_category\
+          \ = to_text(text_category, \"无法判断\")\n    text_evidence = to_text(text_evidence)\n\
+          \    text_reason = to_text(text_reason)\n\n    image_is_malicious = to_bool(image_is_malicious)\n\
+          \    image_quality = to_text(image_quality, \"manual_review\")\n    image_category\
+          \ = to_text(image_category, \"无法判断\")\n    image_evidence = to_text(image_evidence)\n\
+          \    image_reason = to_text(image_reason)\n\n    # 文字或图片任意一方恶意\n    if text_is_malicious\
+          \ or image_is_malicious:\n        categories = []\n        evidence = []\n\
+          \        reasons = []\n\n        if text_is_malicious:\n            categories.append(text_category)\n\
+          \n            if text_evidence:\n                evidence.append(\"文字：\"\
+          \ + text_evidence)\n\n            if text_reason:\n                reasons.append(\"\
+          文字：\" + text_reason)\n\n        if image_is_malicious:\n            categories.append(image_category)\n\
+          \n            if image_evidence:\n                evidence.append(\"图片：\"\
+          \ + image_evidence)\n\n            if image_reason:\n                reasons.append(\"\
+          图片：\" + image_reason)\n\n        return {\n            \"final_is_malicious\"\
+          : True,\n            \"final_quality\": \"malicious\",\n            \"final_category\"\
+          : \"；\".join(categories) or \"恶意评价\",\n            \"final_evidence\": \"\
+          ；\".join(evidence),\n            \"final_reason\": \"；\".join(reasons),\n\
+          \            \"final_status\": \"decided\"\n        }\n\n    # 图片无法可靠判断\n\
+          \    if image_quality == \"manual_review\":\n        return {\n        \
+          \    \"final_is_malicious\": False,\n            \"final_quality\": \"manual_review\"\
+          ,\n            \"final_category\": \"图片需人工复核\",\n            \"final_evidence\"\
+          : image_evidence,\n            \"final_reason\": image_reason or \"图片无法可靠读取或判断。\"\
+          ,\n            \"final_status\": \"manual_review\"\n        }\n\n    # 上传了图片，但没有合格图片\n\
+          \    if image_quality == \"image_low_quality\":\n        return {\n    \
+          \        \"final_is_malicious\": False,\n            \"final_quality\":\
+          \ \"low_quality\",\n            \"final_category\": image_category or \"\
+          图片低质量\",\n            \"final_evidence\": image_evidence,\n            \"\
+          final_reason\": (\n                \"文字审核结果为“\"\n                + text_category\n\
+          \                + \"”，但上传图片均无效或低质量，因此最终降级为低质量评价。\"\n            ),\n  \
+          \          \"final_status\": \"decided\"\n        }\n\n    # 无图或图片正常，保留文字审核结论\n\
+          \    return {\n        \"final_is_malicious\": False,\n        \"final_quality\"\
+          : text_quality,\n        \"final_category\": text_category,\n        \"\
+          final_evidence\": text_evidence,\n        \"final_reason\": text_reason,\n\
+          \        \"final_status\": \"decided\"\n    }"
+        code_language: python3
+        outputs:
+          final_category:
+            children: null
+            type: string
+          final_evidence:
+            children: null
+            type: string
+          final_is_malicious:
+            children: null
+            type: boolean
+          final_quality:
+            children: null
+            type: string
+          final_reason:
+            children: null
+            type: string
+          final_status:
+            children: null
+            type: string
+        selected: false
+        title: 多模态结果融合
+        type: code
+        variables:
+        - value_selector:
+          - '1791198007104'
+          - text_is_malicious
+          value_type: object
+          variable: text_is_malicious
+        - value_selector:
+          - '1791198007104'
+          - text_quality
+          value_type: object
+          variable: text_quality
+        - value_selector:
+          - '1791198007104'
+          - text_category
+          value_type: object
+          variable: text_category
+        - value_selector:
+          - '1791198007104'
+          - text_evidence
+          value_type: object
+          variable: text_evidence
+        - value_selector:
+          - '1791198007104'
+          - text_reason
+          value_type: object
+          variable: text_reason
+        - value_selector:
+          - '1791360560524'
+          - image_is_malicious
+          value_type: object
+          variable: image_is_malicious
+        - value_selector:
+          - '1791360560524'
+          - image_quality
+          value_type: object
+          variable: image_quality
+        - value_selector:
+          - '1791360560524'
+          - image_category
+          value_type: object
+          variable: image_category
+        - value_selector:
+          - '1791360560524'
+          - image_evidence
+          value_type: object
+          variable: image_evidence
+        - value_selector:
+          - '1791360560524'
+          - image_reason
+          value_type: object
+          variable: image_reason
+      height: 50
+      id: '1791361073435'
+      position:
+        x: 3985.0286567987205
+        y: 2085.8314427716673
+      positionAbsolute:
+        x: 3985.0286567987205
+        y: 2085.8314427716673
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 0
+    - data:
+        outputs:
+        - value_selector:
+          - '1789904350597'
+          - review_id
+          value_type: string
+          variable: review_id
+        - value_selector:
+          - '1789904350597'
+          - product_id
+          value_type: string
+          variable: product_id
+        - value_selector:
+          - '1791361073435'
+          - final_is_malicious
+          value_type: boolean
+          variable: final_is_malicious
+        - value_selector:
+          - '1791361073435'
+          - final_quality
+          value_type: string
+          variable: final_quality
+        - value_selector:
+          - '1791361073435'
+          - final_category
+          value_type: string
+          variable: final_category
+        - value_selector:
+          - '1791361073435'
+          - final_evidence
+          value_type: string
+          variable: final_evidence
+        - value_selector:
+          - '1791361073435'
+          - final_reason
+          value_type: string
+          variable: final_reason
+        - value_selector:
+          - '1791361073435'
+          - final_status
+          value_type: string
+          variable: final_status
+        selected: false
+        title: 最终分析结果
+        type: end
+      height: 270
+      id: '1791365474574'
+      position:
+        x: 4340.384749363961
+        y: 2085.8314427716673
+      positionAbsolute:
+        x: 4340.384749363961
+        y: 2085.8314427716673
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 0
+    viewport:
+      x: -338.3422241372372
+      y: 111.55358982052893
+      zoom: 0.25
+  rag_pipeline_variables: []
